@@ -1,0 +1,161 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.block-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    width: var(--line-width, 0px);
+    height: 1px;
+    background-color: #666;
+    position: absolute;
+    left: 50%;
+    transform: rotate(var(--line-rotate, 0deg));
+    transform-origin: top left;
+  }
+}
+
+.block-wrap {
+  height: 80px;
+  margin: 0 20px;
+}
+
+.block-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.block {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  z-index: 10;
+  position: relative;
+  background-color: #fff;
+  font-size: 14px;
+  color: #808080;
+  cursor: pointer;
+
+  &__blue {
+    border: 0.15rem solid #65ace0;
+
+    .counter {
+      color: #65ace0;
+    }
+  }
+
+  &__red {
+    border: 0.15rem solid #fbbea0;
+
+    .counter {
+      color: #fbbea0;
+    }
+  }
+
+  .counter {
+    position: absolute;
+    top: 0px;
+    right: 14px;
+  }
+
+  .id {
+    position: absolute;
+    left: 8px;
+    color: #c0c0c0;
+    font-size: 12px;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 46px;
+}
+
+.description {
+  font-size: 13px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: fit-content;
+
+  dl {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+  }
+
+  dt {
+    display: inline;
+    margin: 0;
+    font-size: 16px;
+
+    .refresh-color-block {
+      width: 14px;
+      height: 14px;
+      background-color: yellow;
+      margin: auto;
+    }
+
+    .do-check-color-block {
+      width: 14px;
+      height: 14px;
+      background-color: #fffacd;
+      margin: auto;
+    }
+  }
+
+  dd {
+    margin-left: 8px;
+
+    &::before {
+      content: "-";
+      margin-right: 8px;
+    }
+  }
+
+}
+
+.menu {
+  position: fixed;
+  top: 12px;
+  left: 24px;
+  list-style: none;
+  list-style-type: none;
+  padding: 0;
+  font-size: 13px;
+
+  li {
+    list-style-type: none;
+    margin: 12px 0;
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+}
+
+.container {
+  isolation: isolate;
+  width: fit-content;
+  padding-top: 30px;
+  background-color: white;
+}
