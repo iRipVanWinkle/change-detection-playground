@@ -1,38 +1,16 @@
 {
-  "name": "detector",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
+  "name": "change-detection-playground",
   "private": true,
-  "dependencies": {
-    "@angular/animations": "^19.1.0",
-    "@angular/common": "^19.1.0",
-    "@angular/compiler": "^19.1.0",
-    "@angular/core": "^19.1.0",
-    "@angular/forms": "^19.1.0",
-    "@angular/platform-browser": "^19.1.0",
-    "@angular/platform-browser-dynamic": "^19.1.0",
-    "@angular/router": "^19.1.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+  "scripts": {
+    "install:all": "npm install && npm --prefix v19 install && npm --prefix v22 install",
+    "start": "concurrently --names v19,v22 --prefix-colors red,blue \"npm:start:19\" \"npm:start:22\"",
+    "start:19": "npm --prefix v19 start",
+    "start:22": "npm --prefix v22 start",
+    "build": "node scripts/build.mjs",
+    "test": "npm --prefix v22 test -- --watch=false",
+    "preview": "node scripts/preview.mjs"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.1.8",
-    "@angular/cli": "^19.1.8",
-    "@angular/compiler-cli": "^19.1.0",
-    "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.5.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.7.2"
+    "concurrently": "10.0.6"
   }
 }

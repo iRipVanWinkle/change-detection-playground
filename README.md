@@ -4,20 +4,28 @@ This project is an Angular application designed to explore and demonstrate vario
 
 This is a demo application for the article **Angular Change Detection** ([en](https://medium.com/@iripvanwinkle/angular-change-detection-d3654c29099f), [ua](https://dou.ua/forums/topic/53274/))
 
+The playground ships in two versions that run side by side, so you can compare how change detection works in Angular 19 and Angular 22:
+
+| Folder | Angular | URL |
+|---|---|---|
+| [`v19/`](v19) | 19.1 — the version the article was written for | http://localhost:4219 |
+| [`v22/`](v22) | 22.2 — upgraded and modernized | http://localhost:4222 |
+
+Every page has a link in the menu that opens the same example in the other version.
+
 ## Project Structure
 
-The project is organized as follows:
+Both `v19/` and `v22/` are standalone Angular projects with the same layout:
 
-- **`src/`**: Contains the main application code.
-  - **`apps/`**: Includes various Angular components demonstrating different change detection strategies.
-  - **`blocks/`**: Contains reusable building blocks for the application.
-  - **`helpers/`**: Utility functions and helpers for the application.
+- **`src/apps/`**: Root components, one per change detection scenario.
+- **`src/blocks/`**: Reusable building blocks (the tree nodes) for the scenarios.
+- **`src/helpers/`**: Utility functions and helpers for the application.
 
 ## Components
 
-The application includes the following components, each demonstrating a specific change detection strategy:
+Each component demonstrates a specific change detection strategy:
 
-- `<app-default>`: Default change detection strategy.
+- `<app-default>`: Default (`Eager` in v22) change detection strategy.
 - `<app-default-with-onpush>`: Default strategy combined with `OnPush`.
 - `<app-default-signal>`: Default strategy using Angular Signals.
 - `<app-onpush>`: `OnPush` change detection strategy.
@@ -27,46 +35,74 @@ The application includes the following components, each demonstrating a specific
 - `<app-onpush-content>`: `OnPush` strategy with `ng-content`.
 - `<app-default-manual>`: Manual change detection.
 - `<app-onpush-do-check>`: `OnPush` strategy with `ngDoCheck`.
+- `<app-implicit>` (v22 only): a component without `changeDetection`, which is `OnPush` since Angular 22.
+
+## What changed in Angular 22
+
+The examples behave the same in both versions. The differences are in the API and the defaults:
+
+| | Angular 19 | Angular 22 |
+|---|---|---|
+| Strategy when `changeDetection` is omitted | `Default` | `OnPush` |
+| Name of the "check every time" strategy | `ChangeDetectionStrategy.Default` | `ChangeDetectionStrategy.Eager` (`Default` is deprecated) |
+| App without change detection providers | Zone.js | Zoneless (since v21); Zone.js needs `provideZoneChangeDetection()` |
+| Zoneless provider | `provideExperimentalZonelessChangeDetection()` | `provideZonelessChangeDetection()` |
+| Hook after each render | `afterRender()` | `afterEveryRender()` with `earlyRead` / `write` phases |
+| Inputs and view queries | `@Input()`, `@ViewChild()` | `input()`, `viewChild()` |
+| Inputs of a dynamic component | `ComponentRef.setInput()` | `createComponent(..., { bindings: [inputBinding(...)] })` |
+| Services | `@Injectable()` + `providers` | `@Service()` |
+| Build / tests | `@angular-devkit/build-angular`, Karma | `@angular/build`, Vitest |
+| Node.js / TypeScript | Node 18.19+ / TS 5.5–5.7 | Node 22.22.3+ / TS 6.0 |
+
+The **No strategy (v22 default)** example shows why the new default matters: clicking an `Eager` block under a component with no strategy does not update its counter, because its `OnPush`-by-default ancestors are never marked dirty.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (version specified in `.nvmrc`)
-- Angular CLI
+- Node.js 22.22.3 or newer (see `.nvmrc`). It works for both versions.
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd change-detection-playground
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+git clone <repository-url>
+cd change-detection-playground
+npm run install:all
+```
 
 ### Running the Application
 
-To serve the application locally, run:
+Run both versions at once:
 
 ```bash
 npm start
 ```
 
-The application will be available at `http://localhost:4200`.
-
-### Building the Application
-
-To build the application for production, run:
+Or just one of them:
 
 ```bash
-npm run build
+npm run start:19   # http://localhost:4219
+npm run start:22   # http://localhost:4222
 ```
 
-The build artifacts will be stored in the `dist/` directory.
+### Building and Testing
+
+```bash
+npm run build     # builds both versions into a single dist/ folder
+npm run preview   # serves dist/ at http://localhost:4300
+npm test          # runs the Vitest specs of v22
+```
+
+The build has one entrypoint, `dist/index.html`, where you choose a version:
+
+```
+dist/
+├── index.html   # entry page
+├── v19/         # Angular 19 app
+└── v22/         # Angular 22 app
+```
+
+The apps use a relative `<base href>`, so `dist/` can be deployed to any static host, including a sub-path such as GitHub Pages. In the build, the menu link switches between `v19/` and `v22/` on the same origin; with the dev servers it switches between the ports.
 
 ## Exploring Change Detection
 
