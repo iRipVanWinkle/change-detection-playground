@@ -1,0 +1,66 @@
+@if (title) {
+  <h2 class="header">{{ title }}</h2>
+
+  <app-env-injectors />
+}
+
+<div #container class="block-container" [class.block-container__projected]="projected">
+  <div class="block-wrap">
+    <div
+      #block
+      class="block"
+      [class]="'block__' + kind"
+      [style.width.px]="rootWidth / depth"
+      (click)="lookup()"
+    >
+      <i class="id">{{ id() }}</i>
+      <p>
+        {{ label }}
+        @if (modifiers) {
+          <small>{{ modifiers }}</small>
+        }
+      </p>
+
+      <!-- What the component has received from inject() -->
+      @if (result(); as result) {
+        <strong class="result" [style.color]="result.color" [title]="result.title">{{
+          result.text
+        }}</strong>
+      }
+
+      <!-- The instance that lives in the injector of this component -->
+      @if (instance(); as service) {
+        <span class="instance" [style.background-color]="instanceColor(service)"
+          >#{{ service.id }}</span
+        >
+      }
+    </div>
+  </div>
+
+  <div class="block-inner">
+    <!-- View children: declared in the template of this component -->
+    @for (child of blocksTree?.children; track $index) {
+      @switch (child.provide) {
+        @case ('providers') {
+          <app-block-providers [blocksTree]="child" [depth]="depth + 1" />
+        }
+        @case ('viewProviders') {
+          <app-block-view-providers [blocksTree]="child" [depth]="depth + 1" />
+        }
+        @case ('directive') {
+          <app-block appProvideDemoService [blocksTree]="child" [depth]="depth + 1" />
+        }
+        @default {
+          <app-block [blocksTree]="child" [depth]="depth + 1" />
+        }
+      }
+    }
+
+    <!-- Content children: declared by somebody else and projected here -->
+    <ng-content />
+  </div>
+</div>
+
+@if (description) {
+  <div class="description" [innerHTML]="description"></div>
+}
