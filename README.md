@@ -2,7 +2,7 @@
 
 Demo applications for my articles about Angular internals. Each playground is a tree of components you can click on and watch what Angular does.
 
-**Demo:** https://iripvanwinkle.github.io/angular-playground/
+**Demo:** https://iripvanwinkle.github.io/angular-internals-playground/
 
 | Playground           | Folder                                                           | Angular | Dev server            | Article                                                                                                                 |
 | -------------------- | ---------------------------------------------------------------- | ------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -17,8 +17,8 @@ Every project in [`projects/`](projects) is a standalone Angular app with its ow
 Node.js 22.22.3 or newer (see `.nvmrc`). It works for all projects.
 
 ```bash
-git clone https://github.com/iRipVanWinkle/angular-playground.git
-cd angular-playground
+git clone https://github.com/iRipVanWinkle/angular-internals-playground.git
+cd angular-internals-playground
 npm run install:all
 ```
 

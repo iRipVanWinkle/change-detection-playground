@@ -1,5 +1,5 @@
 {
-  "name": "angular-playground",
+  "name": "angular-internals-playground",
   "private": true,
   "scripts": {
     "install:all": "npm install && npm --prefix projects/change-detection/v19 install && npm --prefix projects/change-detection/v22 install && npm --prefix projects/dependency-injection install",
