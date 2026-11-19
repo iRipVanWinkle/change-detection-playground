@@ -1,56 +1,118 @@
 <!doctype html>
-<html lang="en" data-beasties-container>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Angular Playground</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="change-detection/v22/favicon.ico" />
+    <style>
+      * {
+        font-family: sans-serif;
+        box-sizing: border-box;
+      }
 
-<head>
-  <meta charset="utf-8">
-  <title>Detector</title>
-  <base href="/change-detection-playground/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-<style>*{font-family:sans-serif}body{display:flex;flex-direction:column;justify-content:center;align-items:center}.menu{position:fixed;top:12px;left:24px;list-style:none;list-style-type:none;padding:0;font-size:13px}.menu li{list-style-type:none;margin:12px 0}.menu li a{color:#000;text-decoration:none}.container{isolation:isolate;width:fit-content;padding-top:30px;background-color:#fff}</style><link rel="stylesheet" href="styles-OBUESI2V.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-OBUESI2V.css"></noscript></head>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        padding: 24px 16px;
+        color: #333;
+        background: #fff;
+      }
 
-<body>
+      h1 {
+        margin: 0;
+        text-align: center;
+      }
 
-<ul class="menu">
-  <li><a href="./">All</a></li>
-  <li>&nbsp;</li>
-  <li><a href="./?default">Default</a></li>
-  <li><a href="./?defaultWithOnPush">Default with OnPush</a></li>
-  <li><a href="./?defaultSignal">Default Signals</a></li>
+      .subtitle {
+        margin: -16px 0 0;
+        text-align: center;
+        color: #808080;
+      }
 
-  <li>&nbsp;</li>
-  <li><a href="./?onpush">OnPush</a></li>
-  <li><a href="./?onPushWithDefault">OnPush with Default</a></li>
-  <li><a href="./?onPushSignal">OnPush Signals</a></li>
-  <li><a href="./?onPushContent">OnPush ng-content</a></li>
-  <li>&nbsp;</li>
-  <li><a href="./?defaultZoneless">Zoneless</a></li>
-  <li><a href="./?defaultManual">Manual Change Detector</a></li>
-  <li><a href="./?onPushDoCheck">ngDoCheck</a></li>
-</ul>
-  <div class="container">
+      .playgrounds {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+      }
 
-    <app-default></app-default>
+      .playground {
+        width: 300px;
+        padding: 20px 24px;
+        border-radius: 1.5rem;
+        text-decoration: none;
+        color: inherit;
+        background: #fff;
+        transition: background-color 0.2s;
+      }
 
-    <app-default-with-onpush></app-default-with-onpush>
+      .playground:hover {
+        background: #fafafa;
+      }
 
-    <app-default-signal></app-default-signal>
+      .playground--cd {
+        border: 0.15rem solid #65ace0;
+      }
 
-    <app-onpush></app-onpush>
+      .playground--di {
+        border: 0.15rem solid #9b87d8;
+      }
 
-    <app-onpush-with-default></app-onpush-with-default>
+      .playground h2 {
+        margin: 0 0 8px;
+      }
 
-    <app-onpush-signal></app-onpush-signal>
+      .playground p {
+        margin: 0;
+        font-size: 14px;
+        color: #808080;
+        line-height: 1.5;
+      }
 
-    <app-default-zoneless></app-default-zoneless>
+      .articles {
+        font-size: 13px;
+        color: #808080;
+        text-align: center;
+        line-height: 1.6;
+      }
 
-    <app-onpush-content></app-onpush-content>
+      .articles a {
+        color: inherit;
+      }
+    </style>
+  </head>
 
-    <app-default-manual></app-default-manual>
+  <body>
+    <h1>Angular Playground</h1>
+    <p class="subtitle">Angular internals you can click on.</p>
 
-    <app-onpush-do-check></app-onpush-do-check>
+    <div class="playgrounds">
+      <a class="playground playground--cd" href="change-detection/">
+        <h2>Change Detection</h2>
+        <p>
+          Which components Angular checks and when: <code>Default</code>/<code>Eager</code>,
+          <code>OnPush</code>, signals, zoneless. Angular 19 and 22 side by side.
+        </p>
+      </a>
+      <a class="playground playground--di" href="dependency-injection/">
+        <h2>Dependency Injection</h2>
+        <p>
+          Where and in what order Angular looks for a dependency, and which instance a component
+          finally gets.
+        </p>
+      </a>
+    </div>
 
-  </div>
-<script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-EKEVEZM2.js" type="module"></script></body>
-
+    <p class="articles">
+      Change Detection article:
+      <a href="https://medium.com/@iripvanwinkle/angular-change-detection-d3654c29099f">en</a> ·
+      <a href="https://dou.ua/forums/topic/53274/">ua</a>
+    </p>
+  </body>
 </html>

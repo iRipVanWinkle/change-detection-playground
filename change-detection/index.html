@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Angular Change Detection Playground</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="v22/favicon.ico" />
+    <style>
+      * {
+        font-family: sans-serif;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        padding: 24px 16px;
+        color: #333;
+        background: #fff;
+      }
+
+      h1 {
+        margin: 0;
+        text-align: center;
+      }
+
+      .versions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+      }
+
+      .version {
+        width: 300px;
+        padding: 20px 24px;
+        border-radius: 1.5rem;
+        text-decoration: none;
+        color: inherit;
+        background: #fff;
+        transition: background-color 0.2s;
+      }
+
+      .version:hover {
+        background: #fafafa;
+      }
+
+      .version--19 {
+        border: 0.15rem solid #fbbea0;
+      }
+
+      .version--22 {
+        border: 0.15rem solid #65ace0;
+      }
+
+      .version h2 {
+        margin: 0 0 8px;
+      }
+
+      .version p {
+        margin: 0;
+        font-size: 14px;
+        color: #808080;
+        line-height: 1.5;
+      }
+
+      .article {
+        font-size: 13px;
+        color: #808080;
+      }
+
+      .article a {
+        color: inherit;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Angular Change Detection Playground</h1>
+
+    <div class="versions">
+      <a class="version version--19" href="v19/">
+        <h2>Angular 19</h2>
+        <p>
+          The examples as written for the article: <code>Default</code> strategy, Zone.js by
+          default.
+        </p>
+      </a>
+      <a class="version version--22" href="v22/">
+        <h2>Angular 22</h2>
+        <p>
+          The same examples after the upgrade: <code>Eager</code> instead of <code>Default</code>,
+          OnPush and zoneless by default.
+        </p>
+      </a>
+    </div>
+
+    <p class="article">
+      <a href="../">← All playgrounds</a> · Article:
+      <a href="https://medium.com/@iripvanwinkle/angular-change-detection-d3654c29099f">en</a> ·
+      <a href="https://dou.ua/forums/topic/53274/">ua</a>
+    </p>
+
+    <script>
+      for (const link of document.querySelectorAll('.version')) {
+        link.href = `${link.getAttribute('href')}${location.search}`;
+      }
+    </script>
+  </body>
+</html>
