@@ -1,0 +1,19 @@
+<div class="block-container" [blockLineTarget]="block">
+  <div class="block-wrap">
+    <div #block class="block block__red" [style.width.px]="400 / depth" (click)="triggerInterval()">
+      <i class="id">{{ id }}</i>
+      <p>Default 🚀</p>
+      <strong class="counter">{{ count }}</strong>
+    </div>
+  </div>
+
+  @if (blocksTree) {
+    <div class="block-inner">
+      @for (innerBlock of blocksTree.children; track $index) {
+        <ng-container *blockOutlet="innerBlock.component; inputs: { blocksTree: innerBlock, depth: depth + 1 }" />
+      }
+    </div>
+  }
+</div>
+
+{{ highlightBlock() }}

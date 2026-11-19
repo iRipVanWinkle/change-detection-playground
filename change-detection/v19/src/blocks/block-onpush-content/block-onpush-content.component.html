@@ -1,0 +1,15 @@
+<div class="block-container" [blockLineTarget]="block">
+  <div class="block-wrap">
+    <div #block class="block block__blue" [style.width.px]="400 / depth" (click)="triggerInterval()">
+      <i class="id">{{ id }}</i>
+      <p>OnPush</p>
+      <strong class="counter">{{ count }}</strong>
+    </div>
+  </div>
+
+  <div class="block-inner">
+    <ng-content></ng-content>
+  </div>
+</div>
+
+{{ highlightBlock() }}
