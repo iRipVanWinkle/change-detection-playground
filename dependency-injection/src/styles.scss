@@ -1,0 +1,286 @@
+* {
+  font-family: sans-serif;
+}
+
+code {
+  font-family: monospace;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// The line from a block to its parent, see BlockBase.drawLine()
+.block-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    width: var(--line-width, 0px);
+    height: 0;
+    border-top: 1px solid #666;
+    position: absolute;
+    left: 50%;
+    transform: rotate(var(--line-rotate, 0deg));
+    transform-origin: top left;
+  }
+
+  // A content child
+  &__projected::before {
+    border-top-style: dashed;
+  }
+}
+
+.block-wrap {
+  height: 80px;
+  margin: 0 20px;
+}
+
+.block-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.block {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  z-index: 10;
+  position: relative;
+  background-color: #fff;
+  font-size: 14px;
+  color: #808080;
+  cursor: pointer;
+  user-select: none;
+
+  // No providers
+  &__none {
+    border: 0.15rem solid #fbbea0;
+  }
+
+  &__providers {
+    border: 0.15rem solid #65ace0;
+  }
+
+  &__viewProviders {
+    border: 0.15rem solid #b9a2e3;
+  }
+
+  // The provider comes from a directive on the element of the component
+  &__directive {
+    border: 0.15rem solid #7fcfc4;
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+    line-height: 1.15;
+  }
+
+  // inject() options
+  small {
+    display: block;
+    font-size: 11px;
+    color: #a8a8a8;
+  }
+
+  .id {
+    position: absolute;
+    left: 8px;
+    color: #c0c0c0;
+    font-size: 12px;
+  }
+
+  // What inject() returned
+  .result {
+    position: absolute;
+    top: -10px;
+    right: 18px;
+    padding: 0 5px;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+// The instance that lives in an injector
+.instance {
+  position: absolute;
+  bottom: -9px;
+  right: 18px;
+  padding: 1px 7px;
+  border-radius: 1rem;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 14px;
+  color: #fff;
+  animation: instance-created 0.4s ease-out;
+}
+
+@keyframes instance-created {
+  from {
+    transform: scale(0);
+  }
+
+  70% {
+    transform: scale(1.3);
+  }
+}
+
+// EnvironmentInjector hierarchy: NullInjector ← platform ← root
+app-env-injectors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.env {
+  width: 200px;
+  height: 26px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  border: 1px dashed #b0b0b0;
+  border-radius: 2rem;
+  background-color: #fff;
+  font-size: 12px;
+  color: #808080;
+
+  // The line to the injector below
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 50%;
+    height: 20px;
+    border-left: 1px dashed #999;
+  }
+
+  &__provider {
+    border: 0.15rem dashed #65ace0;
+
+    &::after {
+      top: calc(100% + 0.15rem);
+    }
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.description {
+  font-size: 13px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: fit-content;
+
+  dl {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    row-gap: 6px;
+  }
+
+  dt {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  dd {
+    margin-left: 8px;
+
+    &::before {
+      content: '-';
+      margin-right: 8px;
+    }
+  }
+
+  .legend-color {
+    width: 14px;
+    height: 14px;
+
+    &__visited {
+      background-color: yellow;
+    }
+
+    &__found {
+      background-color: #9be89b;
+    }
+  }
+
+  .legend-result {
+    color: #2a9d8f;
+  }
+
+  .legend-instance {
+    position: static;
+    animation: none;
+    background-color: #2a9d8f;
+  }
+
+  .legend-error {
+    color: #e06565;
+  }
+
+  .legend-null {
+    color: #a0a0a0;
+  }
+
+  .legend-line {
+    width: 22px;
+    border-top: 1px solid #666;
+
+    &__projected {
+      border-top-style: dashed;
+    }
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 12px;
+  left: 24px;
+  list-style: none;
+  padding: 0;
+  font-size: 13px;
+
+  li {
+    margin: 12px 0;
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+}
+
+.container {
+  isolation: isolate;
+  width: fit-content;
+  padding-top: 30px;
+  background-color: white;
+
+  // One scenario = one application
+  > * {
+    display: block;
+    margin-bottom: 70px;
+  }
+}
