@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BlockLineDirective, BlockOnPushComponent, BlockOnPushSignalComponent } from '../blocks';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
+import { legend, LEGEND_SIGNAL, LEGEND_DO_CHECK } from '../blocks/legend';
 
 @Component({
   selector: 'app-onpush-do-check',
@@ -10,12 +11,7 @@ import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 })
 export class AppOnPushDoCheckComponent extends BlockOnPushComponent {
   override title = 'Change Detection & ngDoCheck()';
-  override description = `<div>
-    <p><b>Legend</b></p>
-    <dl>
-      <dt>⚡</dt><dd>Angular component that uses a signal.</dd>
-    </dl>
-  </div>`;
+  override description = legend(LEGEND_SIGNAL, LEGEND_DO_CHECK);
 
 
   override blocksTree = {

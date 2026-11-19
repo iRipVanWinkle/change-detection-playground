@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BlockDefaultSignalComponent, BlockLineDirective, BlockOnPushSignalComponent } from '../blocks';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
+import { legend, LEGEND_SIGNAL } from '../blocks/legend';
 
 @Component({
   selector: 'app-default-signal',
@@ -9,12 +10,7 @@ import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 })
 export class AppDefaultSignalComponent extends BlockOnPushSignalComponent {
   override title = 'Default Strategy with Signals';
-  override description = `<div>
-    <p><b>Legend</b></p>
-    <dl>
-      <dt>⚡</dt><dd>Angular component that uses a signal.</dd>
-    </dl>
-  </div>`;
+  override description = legend(LEGEND_SIGNAL);
 
 
   override blocksTree = {

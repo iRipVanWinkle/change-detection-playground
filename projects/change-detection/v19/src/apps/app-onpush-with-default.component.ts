@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgComponentOutlet } from '@angular/common';
 import { BlockDefaultComponent, BlockLineDirective, BlockOnPushComponent } from '../blocks';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
+import { legend } from '../blocks/legend';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 })
 export class AppOnPushWithDefaultComponent extends BlockOnPushComponent {
   override title = 'OnPush Strategy with Default Strategy';
-  override description = ``;
+  override description = legend();
 
   override blocksTree = {
     component: BlockOnPushComponent,

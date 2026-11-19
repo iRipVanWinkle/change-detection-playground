@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BlockLineDirective, BlockOnPushBrokenComponent, BlockOnPushComponent, BlockOnPushSignalComponent } from '../blocks';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
+import { legend, LEGEND_SIGNAL, LEGEND_NO_MARK_FOR_CHECK } from '../blocks/legend';
 
 @Component({
   selector: 'app-onpush',
@@ -10,13 +11,7 @@ import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 })
 export class AppOnPushComponent extends BlockOnPushComponent {
   override title = 'OnPush Change Detection Strategy';
-  override description = `<div>
-    <p><b>Legend</b></p>
-    <dl>
-      <dt>⚡</dt><dd>Angular component that uses a signal.</dd>
-      <dt>🛑</dt><dd>Angular component where <code>markForCheck()</code> is not called.</dd>
-    </dl>
-  </div>`;
+  override description = legend(LEGEND_SIGNAL, LEGEND_NO_MARK_FOR_CHECK);
 
 
   override blocksTree = {

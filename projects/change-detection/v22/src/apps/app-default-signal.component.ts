@@ -5,6 +5,7 @@ import {
   BlockOnPushSignalComponent,
 } from '../blocks';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
+import { legend, LEGEND_SIGNAL } from '../blocks/legend';
 
 @Component({
   selector: 'app-default-signal',
@@ -14,12 +15,7 @@ import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 })
 export class AppDefaultSignalComponent extends BlockOnPushSignalComponent {
   protected override title = 'Eager Strategy with Signals';
-  protected override description = `<div>
-    <p><b>Legend</b></p>
-    <dl>
-      <dt>⚡</dt><dd>Angular component that uses a signal.</dd>
-    </dl>
-  </div>`;
+  protected override description = legend(LEGEND_SIGNAL);
 
   protected override rootTree = {
     component: BlockDefaultSignalComponent,

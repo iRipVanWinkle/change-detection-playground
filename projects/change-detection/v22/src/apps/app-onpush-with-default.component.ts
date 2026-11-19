@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BlockDefaultComponent, BlockLineDirective, BlockOnPushComponent } from '../blocks';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
+import { legend } from '../blocks/legend';
 
 @Component({
   selector: 'app-onpush-with-default',
@@ -10,7 +11,7 @@ import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 })
 export class AppOnPushWithDefaultComponent extends BlockOnPushComponent {
   protected override title = 'OnPush Strategy with Eager Strategy';
-  protected override description = ``;
+  protected override description = legend();
 
   protected override rootTree = {
     component: BlockOnPushComponent,

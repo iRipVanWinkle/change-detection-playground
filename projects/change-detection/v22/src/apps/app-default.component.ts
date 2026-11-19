@@ -6,6 +6,7 @@ import {
   BlockLineDirective,
 } from '../blocks';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
+import { legend, LEGEND_SIGNAL, LEGEND_EMPTY_INTERVAL } from '../blocks/legend';
 
 @Component({
   selector: 'app-default',
@@ -15,13 +16,7 @@ import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 })
 export class AppDefaultComponent extends BlockDefaultComponent {
   protected override title = 'Eager Change Detection Strategy';
-  protected override description = `<div>
-    <p><b>Legend</b></p>
-    <dl>
-      <dt>⚡</dt><dd>Angular component that uses a signal.</dd>
-      <dt>⏳</dt><dd>Angular component where <code>setInterval</code> is empty.</dd>
-    </dl>
-  </div>`;
+  protected override description = legend(LEGEND_SIGNAL, LEGEND_EMPTY_INTERVAL);
 
   protected override rootTree = {
     component: BlockDefaultComponent,

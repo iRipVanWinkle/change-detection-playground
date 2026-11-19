@@ -100,26 +100,14 @@ body {
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
+    row-gap: 6px;
   }
 
   dt {
-    display: inline;
+    display: flex;
+    justify-content: center;
     margin: 0;
     font-size: 16px;
-
-    .refresh-color-block {
-      width: 14px;
-      height: 14px;
-      background-color: yellow;
-      margin: auto;
-    }
-
-    .do-check-color-block {
-      width: 14px;
-      height: 14px;
-      background-color: #fffacd;
-      margin: auto;
-    }
   }
 
   dd {
@@ -129,6 +117,26 @@ body {
       content: '-';
       margin-right: 8px;
     }
+  }
+
+  .legend-color {
+    width: 14px;
+    height: 14px;
+
+    &__checked {
+      background-color: yellow;
+    }
+  }
+
+  .legend-counter {
+    font-size: 14px;
+    color: #808080;
+  }
+
+  .legend-do-check {
+    font-size: 13px;
+    font-weight: normal;
+    color: #e06565;
   }
 }
 

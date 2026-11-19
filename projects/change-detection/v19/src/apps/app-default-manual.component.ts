@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BlockDefaultComponent, BlockDefaultSignalComponent, BlockLineDirective } from '../blocks';
 import { BlockDefaultDetectChangesComponent } from '../blocks/block-default-detect-changes/block-default-detect-changes.component';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
+import { legend, LEGEND_SIGNAL, LEGEND_DETACH } from '../blocks/legend';
 
 
 @Component({
@@ -12,13 +13,7 @@ import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 export class AppDefaultManualComponent extends BlockDefaultComponent {
 
   override title = 'Manual Change Detection';
-  override description = `<div>
-    <p><b>Legend</b></p>
-    <dl>
-      <dt>⚡</dt><dd>Angular component that uses a signal.</dd>
-      <dt>🚀</dt><dd>Angular component where <code>detach</code> is called after click.</dd>
-    </dl>
-  </div>`;
+  override description = legend(LEGEND_SIGNAL, LEGEND_DETACH);
 
   override blocksTree = {
     component: BlockDefaultComponent,

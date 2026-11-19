@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BlockLineDirective, BlockOnPushContentComponent } from '../blocks';
+import { legend } from '../blocks/legend';
 
 @Component({
   selector: 'app-onpush-content',
@@ -43,5 +44,5 @@ import { BlockLineDirective, BlockOnPushContentComponent } from '../blocks';
 })
 export class AppOnPushContentComponent extends BlockOnPushContentComponent {
   protected override title = 'OnPush Change Detection Strategy';
-  protected override description = ``;
+  protected override description = legend();
 }
