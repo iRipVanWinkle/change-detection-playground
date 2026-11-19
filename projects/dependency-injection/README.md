@@ -30,16 +30,16 @@ The lookup itself is always performed by Angular (`Injector.get()` on the compon
 
 Every scenario is a separate Angular application with its own root injector. Use the menu to open one of them (`/?providers`) or all at once.
 
-| Menu item | Component | What it shows |
-| --- | --- | --- |
-| Root provider | `<app-root-provider>` | `providedIn: 'root'` — every lookup ends in the root injector, one instance for everybody. |
-| Component providers | `<app-providers>` | `providers` of a component — a separate instance for the component and everything below it; it hides the root one. |
-| Directive providers | `<app-directive>` | A directive shares the `ElementInjector` of its element: its provider is found with `self` and skipped with `skipSelf`. |
-| providers vs viewProviders | `<app-view-providers>` | View children vs content children (`<ng-content>`): projected content does not see `viewProviders`. |
-| self & skipSelf | `<app-self-skip-self>` | `self` checks only the component's own injector, `skipSelf` starts from the parent. |
-| optional | `<app-optional>` | No root provider: `NullInjectorError` vs `null` for an `optional` dependency. |
-| host | `<app-host>` | `host` stops at the host component, where only `viewProviders` are visible. |
-| host & ng-content | `<app-host-content>` | The host is the component whose template declares the block, not its parent element. |
+| Menu item                  | Component              | What it shows                                                                                                           |
+| -------------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Root provider              | `<app-root-provider>`  | `providedIn: 'root'` — every lookup ends in the root injector, one instance for everybody.                              |
+| Component providers        | `<app-providers>`      | `providers` of a component — a separate instance for the component and everything below it; it hides the root one.      |
+| Directive providers        | `<app-directive>`      | A directive shares the `ElementInjector` of its element: its provider is found with `self` and skipped with `skipSelf`. |
+| providers vs viewProviders | `<app-view-providers>` | View children vs content children (`<ng-content>`): projected content does not see `viewProviders`.                     |
+| self & skipSelf            | `<app-self-skip-self>` | `self` checks only the component's own injector, `skipSelf` starts from the parent.                                     |
+| optional                   | `<app-optional>`       | No root provider: `NullInjectorError` vs `null` for an `optional` dependency.                                           |
+| host                       | `<app-host>`           | `host` stops at the host component, where only `viewProviders` are visible.                                             |
+| host & ng-content          | `<app-host-content>`   | The host is the component whose template declares the block, not its parent element.                                    |
 
 ## Project Structure
 

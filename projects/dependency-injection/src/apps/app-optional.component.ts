@@ -21,7 +21,7 @@ export class AppOptionalComponent extends BlockComponent {
   override title = 'optional & NullInjectorError';
   override description = legend(LEGEND_ERROR, LEGEND_NULL);
 
-  override blocksTree: BlocksTree = {
+  protected override rootTree: BlocksTree = {
     children: [
       {
         inject: { optional: true },

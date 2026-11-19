@@ -6,7 +6,7 @@ interface LineGeometry {
 }
 
 @Directive({
-  selector: '[blockLineTarget]'
+  selector: '[blockLineTarget]',
 })
 export class BlockLineDirective {
   readonly targetEl = input<HTMLElement | null>(null, { alias: 'blockLineTarget' });

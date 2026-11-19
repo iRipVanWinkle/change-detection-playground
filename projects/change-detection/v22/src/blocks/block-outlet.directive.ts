@@ -1,8 +1,18 @@
-import { ComponentRef, Directive, DoCheck, inject, Injector, input, inputBinding, OnInit, ViewContainerRef } from '@angular/core';
+import {
+  ComponentRef,
+  Directive,
+  DoCheck,
+  inject,
+  Injector,
+  input,
+  inputBinding,
+  OnInit,
+  ViewContainerRef,
+} from '@angular/core';
 import type { BlockBase, BlocksTree } from './block-base';
 
 @Directive({
-  selector: '[blockOutlet]'
+  selector: '[blockOutlet]',
 })
 export class BlockOutletDirective implements OnInit, DoCheck {
   readonly blockOutlet = input.required<BlocksTree>();

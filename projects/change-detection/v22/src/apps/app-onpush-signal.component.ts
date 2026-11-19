@@ -1,12 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BlockDefaultSignalComponent, BlockLineDirective, BlockOnPushSignalComponent } from '../blocks';
+import {
+  BlockDefaultSignalComponent,
+  BlockLineDirective,
+  BlockOnPushSignalComponent,
+} from '../blocks';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 
 @Component({
   selector: 'app-onpush-signal',
   templateUrl: '../blocks/block-onpush-signal/block-onpush-signal.component.html',
   imports: [BlockLineDirective, BlockOutletDirective],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppOnPushSignalComponent extends BlockOnPushSignalComponent {
   protected override title = 'OnPush Strategy with Signals';
@@ -23,24 +27,24 @@ export class AppOnPushSignalComponent extends BlockOnPushSignalComponent {
         component: BlockDefaultSignalComponent,
         children: [
           {
-            component: BlockDefaultSignalComponent
+            component: BlockDefaultSignalComponent,
           },
           {
-            component: BlockDefaultSignalComponent
-          }
-        ]
+            component: BlockDefaultSignalComponent,
+          },
+        ],
       },
       {
         component: BlockOnPushSignalComponent,
         children: [
           {
-            component: BlockOnPushSignalComponent
+            component: BlockOnPushSignalComponent,
           },
           {
-            component: BlockOnPushSignalComponent
-          }
-        ]
-      }
-    ]
+            component: BlockOnPushSignalComponent,
+          },
+        ],
+      },
+    ],
   };
 }

@@ -204,7 +204,7 @@ export class Playground {
     [...this.blocks.values()]
       .sort(
         (a, b) =>
-          a.depth - b.depth ||
+          a.depth() - b.depth() ||
           (a.hostElement.compareDocumentPosition(b.hostElement) & Node.DOCUMENT_POSITION_FOLLOWING
             ? -1
             : 1),

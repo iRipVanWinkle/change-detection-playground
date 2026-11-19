@@ -31,7 +31,7 @@ import { DemoService } from '../helpers/demo.service';
         <div
           #block
           class="block block__viewProviders"
-          [style.width.px]="rootWidth / depth"
+          [style.width.px]="rootWidth / depth()"
           (click)="lookup()"
         >
           <i class="id">{{ id() }}</i>

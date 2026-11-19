@@ -8,7 +8,7 @@ import { INTERVAL_DELAY } from '../constants';
   selector: 'app-block-onpush-signal',
   templateUrl: './block-onpush-signal.component.html',
   imports: [BlockLineDirective, BlockOutletDirective],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlockOnPushSignalComponent extends BlockBase {
   protected readonly count = signal<number | null>(null);
@@ -19,7 +19,7 @@ export class BlockOnPushSignalComponent extends BlockBase {
     clearInterval(this.intervalRef);
 
     this.intervalRef = setInterval(() => {
-      this.count.update(i => (i ?? 0) + 1);
+      this.count.update((i) => (i ?? 0) + 1);
     }, INTERVAL_DELAY);
   }
 }

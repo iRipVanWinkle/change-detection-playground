@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# The Angular 19 snapshot of the first article keeps its original line endings
+projects/change-detection/v19/** -text

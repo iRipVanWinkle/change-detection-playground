@@ -8,7 +8,7 @@ import { INTERVAL_DELAY } from '../constants';
   selector: 'app-block-default',
   templateUrl: './block-default.component.html',
   imports: [BlockLineDirective, BlockOutletDirective],
-  changeDetection: ChangeDetectionStrategy.Eager
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BlockDefaultComponent extends BlockBase {
   protected count: null | number = null;

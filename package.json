@@ -10,9 +10,12 @@
     "start:di": "npm --prefix projects/dependency-injection start",
     "build": "node scripts/build.mjs",
     "test": "npm --prefix projects/change-detection/v22 test -- --watch=false",
-    "preview": "node scripts/preview.mjs"
+    "preview": "node scripts/preview.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "concurrently": "10.0.6"
+    "concurrently": "10.0.6",
+    "prettier": "^3.8.1"
   }
 }

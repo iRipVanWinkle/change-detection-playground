@@ -1,16 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BlockDefaultComponent, BlockDefaultEmptyComponent, BlockDefaultSignalComponent, BlockLineDirective } from '../blocks';
+import {
+  BlockDefaultComponent,
+  BlockDefaultEmptyComponent,
+  BlockDefaultSignalComponent,
+  BlockLineDirective,
+} from '../blocks';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
-
 
 @Component({
   selector: 'app-default',
   templateUrl: '../blocks/block-default/block-default.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [BlockLineDirective, BlockOutletDirective]
+  imports: [BlockLineDirective, BlockOutletDirective],
 })
 export class AppDefaultComponent extends BlockDefaultComponent {
-
   protected override title = 'Eager Change Detection Strategy';
   protected override description = `<div>
     <p><b>Legend</b></p>
@@ -27,24 +30,24 @@ export class AppDefaultComponent extends BlockDefaultComponent {
         component: BlockDefaultComponent,
         children: [
           {
-            component: BlockDefaultComponent
+            component: BlockDefaultComponent,
           },
           {
-            component: BlockDefaultEmptyComponent
-          }
-        ]
+            component: BlockDefaultEmptyComponent,
+          },
+        ],
       },
       {
         component: BlockDefaultComponent,
         children: [
           {
-            component: BlockDefaultSignalComponent
+            component: BlockDefaultSignalComponent,
           },
           {
-            component: BlockDefaultComponent
-          }
-        ]
-      }
-    ]
+            component: BlockDefaultComponent,
+          },
+        ],
+      },
+    ],
   };
 }

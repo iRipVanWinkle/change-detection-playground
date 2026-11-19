@@ -3,15 +3,13 @@ import { BlockDefaultComponent, BlockDefaultSignalComponent, BlockLineDirective 
 import { BlockDefaultDetectChangesComponent } from '../blocks/block-default-detect-changes/block-default-detect-changes.component';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 
-
 @Component({
   selector: 'app-default-manual',
   templateUrl: '../blocks/block-default/block-default.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [BlockLineDirective, BlockOutletDirective]
+  imports: [BlockLineDirective, BlockOutletDirective],
 })
 export class AppDefaultManualComponent extends BlockDefaultComponent {
-
   protected override title = 'Manual Change Detection';
   protected override description = `<div>
     <p><b>Legend</b></p>
@@ -28,24 +26,24 @@ export class AppDefaultManualComponent extends BlockDefaultComponent {
         component: BlockDefaultComponent,
         children: [
           {
-            component: BlockDefaultComponent
+            component: BlockDefaultComponent,
           },
           {
-            component: BlockDefaultComponent
-          }
-        ]
+            component: BlockDefaultComponent,
+          },
+        ],
       },
       {
         component: BlockDefaultDetectChangesComponent,
         children: [
           {
-            component: BlockDefaultSignalComponent
+            component: BlockDefaultSignalComponent,
           },
           {
-            component: BlockDefaultComponent
-          }
-        ]
-      }
-    ]
+            component: BlockDefaultComponent,
+          },
+        ],
+      },
+    ],
   };
 }

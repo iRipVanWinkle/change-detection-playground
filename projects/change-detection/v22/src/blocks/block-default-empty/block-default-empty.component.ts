@@ -8,7 +8,7 @@ import { INTERVAL_DELAY } from '../constants';
   selector: 'app-block-default-empty',
   templateUrl: './block-default-empty.component.html',
   imports: [BlockLineDirective, BlockOutletDirective],
-  changeDetection: ChangeDetectionStrategy.Eager
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BlockDefaultEmptyComponent extends BlockBase {
   protected triggerInterval() {

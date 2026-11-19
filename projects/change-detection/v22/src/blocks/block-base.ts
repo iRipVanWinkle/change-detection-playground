@@ -1,4 +1,15 @@
-import { computed, Directive, DoCheck, ElementRef, inject, input, NgZone, OnInit, Type, viewChild } from '@angular/core';
+import {
+  computed,
+  Directive,
+  DoCheck,
+  ElementRef,
+  inject,
+  input,
+  NgZone,
+  OnInit,
+  Type,
+  viewChild,
+} from '@angular/core';
 import { IdentifierGenerator } from '../helpers/identifier-generator.service';
 
 export interface BlocksTree {
@@ -51,7 +62,7 @@ export abstract class BlockBase implements OnInit, DoCheck {
       this.blockEl().nativeElement.animate(keyframes, {
         fill: 'forwards',
         easing: 'ease-in-out',
-        duration: 700
+        duration: 700,
       });
     });
   }

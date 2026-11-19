@@ -29,7 +29,7 @@ import {
         <div
           #block
           class="block block__none"
-          [style.width.px]="rootWidth / depth"
+          [style.width.px]="rootWidth / depth()"
           (click)="lookup()"
         >
           <i class="id">{{ id() }}</i>

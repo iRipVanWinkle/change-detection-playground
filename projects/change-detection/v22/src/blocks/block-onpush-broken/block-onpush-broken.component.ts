@@ -8,7 +8,7 @@ import { INTERVAL_DELAY } from '../constants';
   selector: 'app-block-onpush-broken',
   templateUrl: './block-onpush-broken.component.html',
   imports: [BlockLineDirective, BlockOutletDirective],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlockOnPushBrokenComponent extends BlockBase {
   protected count: null | number = null;

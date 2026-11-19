@@ -14,7 +14,7 @@ export class AppRootProviderComponent extends BlockComponent {
   override title = "Root provider — providedIn: 'root'";
   override description = legend();
 
-  override blocksTree: BlocksTree = {
+  protected override rootTree: BlocksTree = {
     children: [
       {
         children: [{}, {}],

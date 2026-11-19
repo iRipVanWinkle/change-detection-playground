@@ -5,7 +5,7 @@ import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 @Component({
   selector: 'app-implicit',
   templateUrl: '../blocks/block-implicit/block-implicit.component.html',
-  imports: [BlockLineDirective, BlockOutletDirective]
+  imports: [BlockLineDirective, BlockOutletDirective],
 })
 export class AppImplicitComponent extends BlockImplicitComponent {
   protected override title = 'No Strategy: OnPush by Default (Angular 22)';
@@ -23,24 +23,24 @@ export class AppImplicitComponent extends BlockImplicitComponent {
         component: BlockImplicitComponent,
         children: [
           {
-            component: BlockImplicitComponent
+            component: BlockImplicitComponent,
           },
           {
-            component: BlockDefaultComponent
-          }
-        ]
+            component: BlockDefaultComponent,
+          },
+        ],
       },
       {
         component: BlockDefaultComponent,
         children: [
           {
-            component: BlockImplicitComponent
+            component: BlockImplicitComponent,
           },
           {
-            component: BlockDefaultComponent
-          }
-        ]
-      }
-    ]
+            component: BlockDefaultComponent,
+          },
+        ],
+      },
+    ],
   };
 }

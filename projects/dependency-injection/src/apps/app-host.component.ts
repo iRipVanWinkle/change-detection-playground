@@ -21,7 +21,7 @@ export class AppHostComponent extends BlockComponent {
   override title = 'host';
   override description = legend(LEGEND_ERROR, LEGEND_NULL);
 
-  override blocksTree: BlocksTree = {
+  protected override rootTree: BlocksTree = {
     children: [
       {
         provide: 'viewProviders',

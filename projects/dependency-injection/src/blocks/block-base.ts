@@ -1,12 +1,13 @@
 import {
   afterNextRender,
   booleanAttribute,
+  computed,
   Directive,
   ElementRef,
   inject,
   Injector,
+  input,
   InjectOptions,
-  Input,
   signal,
   viewChild,
 } from '@angular/core';
@@ -38,11 +39,15 @@ const LABELS: Record<BlockKind, string> = {
 
 @Directive()
 export abstract class BlockBase implements InjectorView {
-  @Input() depth = 1;
-  @Input() blocksTree?: BlocksTree;
+  readonly depth = input(1);
+  readonly blocksTree = input<BlocksTree>();
 
   /** Marks a block that is passed to its parent as content (`<ng-content>`). */
-  @Input({ transform: booleanAttribute }) projected = false;
+  readonly projected = input(false, { transform: booleanAttribute });
+
+  // Root app components are bootstrapped without inputs, so they declare their tree here instead.
+  protected rootTree?: BlocksTree;
+  protected readonly tree = computed(() => this.blocksTree() ?? this.rootTree);
 
   title?: string;
   description?: string;
@@ -76,7 +81,7 @@ export abstract class BlockBase implements InjectorView {
    * in the constructor of this component would do.
    */
   lookup(): void {
-    const options = this.blocksTree?.inject ?? {};
+    const options = this.tree()?.inject ?? {};
 
     try {
       const service = this.injector.get(DemoService, undefined, options);
@@ -95,7 +100,7 @@ export abstract class BlockBase implements InjectorView {
 
   /** `{ skipSelf: true, optional: true }` → `skipSelf, optional` */
   get modifiers(): string {
-    return Object.entries(this.blocksTree?.inject ?? {})
+    return Object.entries(this.tree()?.inject ?? {})
       .filter(([, enabled]) => enabled)
       .map(([name]) => name)
       .join(', ');
@@ -114,7 +119,7 @@ export abstract class BlockBase implements InjectorView {
   get hostBlock(): BlockBase | null {
     const parent = this.parent;
 
-    return this.projected ? (parent?.hostBlock ?? null) : parent;
+    return this.projected() ? (parent?.hostBlock ?? null) : parent;
   }
 
   /** Draws a line from this block to its parent. */

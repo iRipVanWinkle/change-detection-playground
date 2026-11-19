@@ -1,8 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BlockDefaultComponent, BlockDefaultSignalComponent, BlockLineDirective, BlockOnPushSignalComponent } from '../blocks';
+import {
+  BlockDefaultComponent,
+  BlockDefaultSignalComponent,
+  BlockLineDirective,
+  BlockOnPushSignalComponent,
+} from '../blocks';
 import { BlockDefaultDetectChangesComponent } from '../blocks/block-default-detect-changes/block-default-detect-changes.component';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
-
 
 @Component({
   selector: 'app-default-zoneless',
@@ -27,24 +31,24 @@ export class AppDefaultZonelessComponent extends BlockDefaultComponent {
         component: BlockDefaultDetectChangesComponent,
         children: [
           {
-            component: BlockDefaultComponent
+            component: BlockDefaultComponent,
           },
           {
-            component: BlockDefaultSignalComponent
-          }
-        ]
+            component: BlockDefaultSignalComponent,
+          },
+        ],
       },
       {
         component: BlockOnPushSignalComponent,
         children: [
           {
-            component: BlockOnPushSignalComponent
+            component: BlockOnPushSignalComponent,
           },
           {
-            component: BlockOnPushSignalComponent
-          }
-        ]
-      }
-    ]
+            component: BlockOnPushSignalComponent,
+          },
+        ],
+      },
+    ],
   };
 }

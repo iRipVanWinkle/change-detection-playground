@@ -1,0 +1,6 @@
+dist/
+node_modules/
+.angular/
+package-lock.json
+# The Angular 19 snapshot of the first article stays as it was
+projects/change-detection/v19/

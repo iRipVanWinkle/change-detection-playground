@@ -4,13 +4,13 @@
   <app-env-injectors />
 }
 
-<div #container class="block-container" [class.block-container__projected]="projected">
+<div #container class="block-container" [class.block-container__projected]="projected()">
   <div class="block-wrap">
     <div
       #block
       class="block"
       [class]="'block__' + kind"
-      [style.width.px]="rootWidth / depth"
+      [style.width.px]="rootWidth / depth()"
       (click)="lookup()"
     >
       <i class="id">{{ id() }}</i>
@@ -39,19 +39,19 @@
 
   <div class="block-inner">
     <!-- View children: declared in the template of this component -->
-    @for (child of blocksTree?.children; track $index) {
+    @for (child of tree()?.children; track $index) {
       @switch (child.provide) {
         @case ('providers') {
-          <app-block-providers [blocksTree]="child" [depth]="depth + 1" />
+          <app-block-providers [blocksTree]="child" [depth]="depth() + 1" />
         }
         @case ('viewProviders') {
-          <app-block-view-providers [blocksTree]="child" [depth]="depth + 1" />
+          <app-block-view-providers [blocksTree]="child" [depth]="depth() + 1" />
         }
         @case ('directive') {
-          <app-block appProvideDemoService [blocksTree]="child" [depth]="depth + 1" />
+          <app-block appProvideDemoService [blocksTree]="child" [depth]="depth() + 1" />
         }
         @default {
-          <app-block [blocksTree]="child" [depth]="depth + 1" />
+          <app-block [blocksTree]="child" [depth]="depth() + 1" />
         }
       }
     }

@@ -14,7 +14,7 @@ export class AppSelfSkipSelfComponent extends BlockComponent {
   override title = 'self & skipSelf';
   override description = legend(LEGEND_ERROR);
 
-  override blocksTree: BlocksTree = {
+  protected override rootTree: BlocksTree = {
     children: [
       {
         provide: 'providers',

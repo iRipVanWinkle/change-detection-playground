@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BlockDefaultSignalComponent, BlockLineDirective, BlockOnPushSignalComponent } from '../blocks';
+import {
+  BlockDefaultSignalComponent,
+  BlockLineDirective,
+  BlockOnPushSignalComponent,
+} from '../blocks';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 
 @Component({
@@ -17,7 +21,6 @@ export class AppDefaultSignalComponent extends BlockOnPushSignalComponent {
     </dl>
   </div>`;
 
-
   protected override rootTree = {
     component: BlockDefaultSignalComponent,
     children: [
@@ -25,24 +28,24 @@ export class AppDefaultSignalComponent extends BlockOnPushSignalComponent {
         component: BlockDefaultSignalComponent,
         children: [
           {
-            component: BlockDefaultSignalComponent
+            component: BlockDefaultSignalComponent,
           },
           {
-            component: BlockDefaultSignalComponent
-          }
-        ]
+            component: BlockDefaultSignalComponent,
+          },
+        ],
       },
       {
         component: BlockOnPushSignalComponent,
         children: [
           {
-            component: BlockOnPushSignalComponent
+            component: BlockOnPushSignalComponent,
           },
           {
-            component: BlockOnPushSignalComponent
-          }
-        ]
-      }
-    ]
+            component: BlockOnPushSignalComponent,
+          },
+        ],
+      },
+    ],
   };
 }

@@ -8,7 +8,7 @@ import { INTERVAL_DELAY } from '../constants';
 @Component({
   selector: 'app-block-implicit',
   templateUrl: './block-implicit.component.html',
-  imports: [BlockLineDirective, BlockOutletDirective]
+  imports: [BlockLineDirective, BlockOutletDirective],
 })
 export class BlockImplicitComponent extends BlockBase {
   protected count: null | number = null;

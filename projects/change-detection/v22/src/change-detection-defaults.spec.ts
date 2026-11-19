@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { IdentifierGenerator } from './helpers/identifier-generator.service';
 
 @Component({
-  template: '{{ value }}'
+  template: '{{ value }}',
 })
 class NoStrategyComponent {
   value = 'initial';
@@ -11,7 +11,7 @@ class NoStrategyComponent {
 
 @Component({
   template: '{{ value }}',
-  changeDetection: ChangeDetectionStrategy.Eager
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 class EagerComponent {
   value = 'initial';
@@ -41,6 +41,10 @@ describe('IdentifierGenerator', () => {
   it('generates sequential letters starting from "a"', () => {
     const generator = TestBed.inject(IdentifierGenerator);
 
-    expect([generator.generateId(), generator.generateId(), generator.generateId()]).toEqual(['a', 'b', 'c']);
+    expect([generator.generateId(), generator.generateId(), generator.generateId()]).toEqual([
+      'a',
+      'b',
+      'c',
+    ]);
   });
 });

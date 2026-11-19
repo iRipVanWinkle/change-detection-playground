@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BlockDefaultComponent, BlockDefaultSignalComponent, BlockLineDirective, BlockOnPushComponent, BlockOnPushSignalComponent } from '../blocks';
+import {
+  BlockDefaultComponent,
+  BlockDefaultSignalComponent,
+  BlockLineDirective,
+  BlockOnPushComponent,
+  BlockOnPushSignalComponent,
+} from '../blocks';
 import { BlockOutletDirective } from '../blocks/block-outlet.directive';
 
 @Component({
@@ -9,7 +15,6 @@ import { BlockOutletDirective } from '../blocks/block-outlet.directive';
   imports: [BlockLineDirective, BlockOutletDirective],
 })
 export class AppDefaultWithOnPushComponent extends BlockDefaultComponent {
-
   protected override title = 'Eager Strategy with OnPush Strategy';
   protected override description = `<div>
     <p><b>Legend</b></p>
@@ -25,12 +30,12 @@ export class AppDefaultWithOnPushComponent extends BlockDefaultComponent {
         component: BlockDefaultComponent,
         children: [
           {
-            component: BlockDefaultSignalComponent
+            component: BlockDefaultSignalComponent,
           },
           {
-            component: BlockDefaultComponent
-          }
-        ]
+            component: BlockDefaultComponent,
+          },
+        ],
       },
       {
         component: BlockOnPushComponent,
@@ -39,18 +44,18 @@ export class AppDefaultWithOnPushComponent extends BlockDefaultComponent {
             component: BlockOnPushSignalComponent,
             children: [
               {
-                component: BlockOnPushComponent
+                component: BlockOnPushComponent,
               },
               {
-                component: BlockOnPushComponent
-              }
-            ]
+                component: BlockOnPushComponent,
+              },
+            ],
           },
           {
-            component: BlockOnPushComponent
-          }
-        ]
-      }
-    ]
+            component: BlockOnPushComponent,
+          },
+        ],
+      },
+    ],
   };
 }

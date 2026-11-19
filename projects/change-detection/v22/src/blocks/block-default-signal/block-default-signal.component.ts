@@ -8,7 +8,7 @@ import { INTERVAL_DELAY } from '../constants';
   selector: 'app-block-default-signal',
   templateUrl: './block-default-signal.component.html',
   imports: [BlockLineDirective, BlockOutletDirective],
-  changeDetection: ChangeDetectionStrategy.Eager
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BlockDefaultSignalComponent extends BlockBase {
   protected readonly count = signal<number | null>(null);
@@ -19,7 +19,7 @@ export class BlockDefaultSignalComponent extends BlockBase {
     clearInterval(this.intervalRef);
 
     this.intervalRef = setInterval(() => {
-      this.count.update(i => (i ?? 0) + 1);
+      this.count.update((i) => (i ?? 0) + 1);
     }, INTERVAL_DELAY);
   }
 }

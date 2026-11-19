@@ -1,49 +1,44 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Angular Dependency Injection Playground</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>Angular Dependency Injection Playground</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
+  <body>
+    <ul class="menu">
+      <li><a href=".">All</a></li>
+      <li>&nbsp;</li>
+      <li><a href="?root">Root provider</a></li>
+      <li><a href="?providers">Component providers</a></li>
+      <li><a href="?directive">Directive providers</a></li>
+      <li><a href="?viewProviders">providers vs viewProviders</a></li>
+      <li>&nbsp;</li>
+      <li><a href="?skipSelf">self &amp; skipSelf</a></li>
+      <li><a href="?optional">optional</a></li>
+      <li><a href="?host">host</a></li>
+      <li><a href="?hostContent">host &amp; ng-content</a></li>
+    </ul>
 
-<body>
+    <div class="container">
+      <app-root-provider></app-root-provider>
 
-  <ul class="menu">
-    <li><a href=".">All</a></li>
-    <li>&nbsp;</li>
-    <li><a href="?root">Root provider</a></li>
-    <li><a href="?providers">Component providers</a></li>
-    <li><a href="?directive">Directive providers</a></li>
-    <li><a href="?viewProviders">providers vs viewProviders</a></li>
-    <li>&nbsp;</li>
-    <li><a href="?skipSelf">self &amp; skipSelf</a></li>
-    <li><a href="?optional">optional</a></li>
-    <li><a href="?host">host</a></li>
-    <li><a href="?hostContent">host &amp; ng-content</a></li>
-  </ul>
+      <app-providers></app-providers>
 
-  <div class="container">
+      <app-directive></app-directive>
 
-    <app-root-provider></app-root-provider>
+      <app-view-providers></app-view-providers>
 
-    <app-providers></app-providers>
+      <app-self-skip-self></app-self-skip-self>
 
-    <app-directive></app-directive>
+      <app-optional></app-optional>
 
-    <app-view-providers></app-view-providers>
+      <app-host></app-host>
 
-    <app-self-skip-self></app-self-skip-self>
-
-    <app-optional></app-optional>
-
-    <app-host></app-host>
-
-    <app-host-content></app-host-content>
-
-  </div>
-</body>
-
+      <app-host-content></app-host-content>
+    </div>
+  </body>
 </html>

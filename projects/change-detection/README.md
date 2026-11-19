@@ -6,10 +6,10 @@ This is a demo application for the article **Angular Change Detection** ([en](ht
 
 The playground ships in two versions that run side by side, so you can compare how change detection works in Angular 19 and Angular 22:
 
-| Folder | Angular | URL |
-|---|---|---|
+| Folder        | Angular                                        | URL                   |
+| ------------- | ---------------------------------------------- | --------------------- |
 | [`v19/`](v19) | 19.1 — the version the article was written for | http://localhost:4219 |
-| [`v22/`](v22) | 22.2 — upgraded and modernized | http://localhost:4222 |
+| [`v22/`](v22) | 22.2 — upgraded and modernized                 | http://localhost:4222 |
 
 Every page has a link in the menu that opens the same example in the other version.
 
@@ -41,18 +41,18 @@ Each component demonstrates a specific change detection strategy:
 
 The examples behave the same in both versions. The differences are in the API and the defaults:
 
-| | Angular 19 | Angular 22 |
-|---|---|---|
-| Strategy when `changeDetection` is omitted | `Default` | `OnPush` |
-| Name of the "check every time" strategy | `ChangeDetectionStrategy.Default` | `ChangeDetectionStrategy.Eager` (`Default` is deprecated) |
-| App without change detection providers | Zone.js | Zoneless (since v21); Zone.js needs `provideZoneChangeDetection()` |
-| Zoneless provider | `provideExperimentalZonelessChangeDetection()` | `provideZonelessChangeDetection()` |
-| Hook after each render | `afterRender()` | `afterEveryRender()` with `earlyRead` / `write` phases |
-| Inputs and view queries | `@Input()`, `@ViewChild()` | `input()`, `viewChild()` |
-| Inputs of a dynamic component | `ComponentRef.setInput()` | `createComponent(..., { bindings: [inputBinding(...)] })` |
-| Services | `@Injectable()` + `providers` | `@Service()` |
-| Build / tests | `@angular-devkit/build-angular`, Karma | `@angular/build`, Vitest |
-| Node.js / TypeScript | Node 18.19+ / TS 5.5–5.7 | Node 22.22.3+ / TS 6.0 |
+|                                            | Angular 19                                     | Angular 22                                                         |
+| ------------------------------------------ | ---------------------------------------------- | ------------------------------------------------------------------ |
+| Strategy when `changeDetection` is omitted | `Default`                                      | `OnPush`                                                           |
+| Name of the "check every time" strategy    | `ChangeDetectionStrategy.Default`              | `ChangeDetectionStrategy.Eager` (`Default` is deprecated)          |
+| App without change detection providers     | Zone.js                                        | Zoneless (since v21); Zone.js needs `provideZoneChangeDetection()` |
+| Zoneless provider                          | `provideExperimentalZonelessChangeDetection()` | `provideZonelessChangeDetection()`                                 |
+| Hook after each render                     | `afterRender()`                                | `afterEveryRender()` with `earlyRead` / `write` phases             |
+| Inputs and view queries                    | `@Input()`, `@ViewChild()`                     | `input()`, `viewChild()`                                           |
+| Inputs of a dynamic component              | `ComponentRef.setInput()`                      | `createComponent(..., { bindings: [inputBinding(...)] })`          |
+| Services                                   | `@Injectable()` + `providers`                  | `@Service()`                                                       |
+| Build / tests                              | `@angular-devkit/build-angular`, Karma         | `@angular/build`, Vitest                                           |
+| Node.js / TypeScript                       | Node 18.19+ / TS 5.5–5.7                       | Node 22.22.3+ / TS 6.0                                             |
 
 The **No strategy (v22 default)** example shows why the new default matters: clicking an `Eager` block under a component with no strategy does not update its counter, because its `OnPush`-by-default ancestors are never marked dirty.
 

@@ -1,4 +1,10 @@
-import { ApplicationConfig, provideZoneChangeDetection, provideZonelessChangeDetection, VERSION, isDevMode } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideZoneChangeDetection,
+  provideZonelessChangeDetection,
+  VERSION,
+  isDevMode,
+} from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppDefaultComponent } from './apps/app-default.component';
 import { AppOnPushComponent } from './apps/app-onpush.component';
@@ -14,16 +20,12 @@ import { AppImplicitComponent } from './apps/app-implicit.component';
 
 // Since Angular 21 apps are zoneless unless they opt in to Zone.js explicitly.
 const appConfig: ApplicationConfig = {
-  providers: [
-    provideZoneChangeDetection({ eventCoalescing: true })
-  ]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true })],
 };
 
 // Zoneless is already the default; it is spelled out because this page also runs zone-based apps.
 const appZonelessConfig: ApplicationConfig = {
-  providers: [
-    provideZonelessChangeDetection()
-  ]
+  providers: [provideZonelessChangeDetection()],
 };
 
 document.querySelector('.angular-version')!.textContent = `Angular ${VERSION.full}`;
@@ -54,17 +56,15 @@ const applications = {
 Object.entries(applications)
   .filter(([key]) => displayAll || searchParams.has(key))
   .forEach(([, rootComponent]) => {
-    bootstrapApplication(rootComponent, appConfig)
-      .catch((err) => console.error(err));
+    bootstrapApplication(rootComponent, appConfig).catch((err) => console.error(err));
   });
 
 const zonelessApplications = {
-  defaultZoneless: AppDefaultZonelessComponent
+  defaultZoneless: AppDefaultZonelessComponent,
 };
 
 Object.entries(zonelessApplications)
   .filter(([key]) => displayAll || searchParams.has(key))
   .forEach(([, rootComponent]) => {
-    bootstrapApplication(rootComponent, appZonelessConfig)
-      .catch((err) => console.error(err));
+    bootstrapApplication(rootComponent, appZonelessConfig).catch((err) => console.error(err));
   });

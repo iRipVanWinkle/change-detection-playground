@@ -15,7 +15,7 @@ export class AppDirectiveComponent extends BlockComponent {
   override title = 'Directive providers';
   override description = legend();
 
-  override blocksTree: BlocksTree = {
+  protected override rootTree: BlocksTree = {
     children: [
       {
         provide: 'directive',

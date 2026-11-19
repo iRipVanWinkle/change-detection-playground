@@ -7,8 +7,16 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
 
 const apps = [
-  { project: 'projects/change-detection/v19', output: 'dist/detector/browser', url: 'change-detection/v19' },
-  { project: 'projects/change-detection/v22', output: 'dist/detector/browser', url: 'change-detection/v22' },
+  {
+    project: 'projects/change-detection/v19',
+    output: 'dist/detector/browser',
+    url: 'change-detection/v19',
+  },
+  {
+    project: 'projects/change-detection/v22',
+    output: 'dist/detector/browser',
+    url: 'change-detection/v22',
+  },
   {
     project: 'projects/dependency-injection',
     output: 'dist/dependency-injection-playground/browser',

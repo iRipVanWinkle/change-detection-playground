@@ -6,7 +6,7 @@ import { BlockOutletDirective } from '../blocks/block-outlet.directive';
   selector: 'app-onpush-do-check',
   templateUrl: '../blocks/block-onpush/block-onpush.component.html',
   imports: [BlockLineDirective, BlockOutletDirective],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppOnPushDoCheckComponent extends BlockOnPushComponent {
   protected override title = 'Change Detection & ngDoCheck()';
@@ -16,7 +16,6 @@ export class AppOnPushDoCheckComponent extends BlockOnPushComponent {
       <dt>⚡</dt><dd>Angular component that uses a signal.</dd>
     </dl>
   </div>`;
-
 
   protected override rootTree = {
     component: BlockOnPushComponent,
@@ -33,8 +32,8 @@ export class AppOnPushDoCheckComponent extends BlockOnPushComponent {
           {
             component: BlockOnPushComponent,
             withDoCheck: true,
-          }
-        ]
+          },
+        ],
       },
       {
         component: BlockOnPushSignalComponent,
@@ -47,9 +46,9 @@ export class AppOnPushDoCheckComponent extends BlockOnPushComponent {
           {
             component: BlockOnPushComponent,
             withDoCheck: true,
-          }
-        ]
-      }
-    ]
+          },
+        ],
+      },
+    ],
   };
 }
