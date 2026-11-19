@@ -7,25 +7,29 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
 
 const apps = [
-  { project: 'change-detection/v19', output: 'dist/detector/browser' },
-  { project: 'change-detection/v22', output: 'dist/detector/browser' },
-  { project: 'dependency-injection', output: 'dist/dependency-injection-playground/browser' },
+  { project: 'projects/change-detection/v19', output: 'dist/detector/browser', url: 'change-detection/v19' },
+  { project: 'projects/change-detection/v22', output: 'dist/detector/browser', url: 'change-detection/v22' },
+  {
+    project: 'projects/dependency-injection',
+    output: 'dist/dependency-injection-playground/browser',
+    url: 'dependency-injection',
+  },
 ];
 
 const landings = [
-  { from: 'landing', to: '' },
-  { from: 'change-detection/landing', to: 'change-detection' },
+  { from: 'landing', url: '' },
+  { from: 'projects/change-detection/landing', url: 'change-detection' },
 ];
 
 rmSync(dist, { recursive: true, force: true });
 
-for (const { project, output } of apps) {
+for (const { project, output, url } of apps) {
   execSync('npm run build', { cwd: join(root, project), stdio: 'inherit' });
-  cpSync(join(root, project, output), join(dist, project), { recursive: true });
+  cpSync(join(root, project, output), join(dist, url), { recursive: true });
 }
 
-for (const { from, to } of landings) {
-  cpSync(join(root, from), join(dist, to), { recursive: true });
+for (const { from, url } of landings) {
+  cpSync(join(root, from), join(dist, url), { recursive: true });
 }
 
 console.log(`\nBuilt ${apps.map(({ project }) => project).join(' + ')} into ${dist}`);

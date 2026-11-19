@@ -6,11 +6,11 @@ Demo applications for my articles about Angular internals. Each playground is a 
 
 | Playground | Folder | Angular | Dev server | Article |
 |---|---|---|---|---|
-| Change Detection | [`change-detection/v19`](change-detection/v19) | 19.1 | http://localhost:4219 | [en](https://medium.com/@iripvanwinkle/angular-change-detection-d3654c29099f), [ua](https://dou.ua/forums/topic/53274/) |
-| | [`change-detection/v22`](change-detection/v22) | 22.2 | http://localhost:4222 | |
-| Dependency Injection | [`dependency-injection`](dependency-injection) | 22.2 | http://localhost:4200 | |
+| Change Detection | [`projects/change-detection/v19`](projects/change-detection/v19) | 19.1 | http://localhost:4219 | [en](https://medium.com/@iripvanwinkle/angular-change-detection-d3654c29099f), [ua](https://dou.ua/forums/topic/53274/) |
+| | [`projects/change-detection/v22`](projects/change-detection/v22) | 22.2 | http://localhost:4222 | |
+| Dependency Injection | [`projects/dependency-injection`](projects/dependency-injection) | 22.2 | http://localhost:4200 | |
 
-Every project is a standalone Angular app with its own `package.json` and `node_modules`. They share no code, so one can be upgraded without touching the others. See the README in each folder for details.
+Every project in [`projects/`](projects) is a standalone Angular app with its own `package.json` and `node_modules`. They share no code, so one can be upgraded without touching the others. See the README in each folder for details.
 
 ## Getting Started
 
@@ -37,7 +37,7 @@ npm run start:di
 ```bash
 npm run build     # builds every app and puts them under one dist/ folder
 npm run preview   # serves dist/ at http://localhost:4300
-npm test          # runs the Vitest specs of change-detection/v22
+npm test          # runs the Vitest specs of projects/change-detection/v22
 ```
 
 The build has one entry page with links to every playground:
@@ -46,7 +46,7 @@ The build has one entry page with links to every playground:
 dist/
 ├── index.html                 # landing/
 ├── change-detection/
-│   ├── index.html             # change-detection/landing/ — choose a version
+│   ├── index.html             # projects/change-detection/landing/ — choose a version
 │   ├── v19/
 │   └── v22/
 └── dependency-injection/
@@ -56,7 +56,7 @@ The apps use a relative `<base href>`, so `dist/` works on any static host, incl
 
 ### Adding a playground
 
-1. Create a standalone Angular app in its own folder, with `"baseHref": "./"` in the production build configuration and a free dev server port.
+1. Create a standalone Angular app in its own folder under `projects/`, with `"baseHref": "./"` in the production build configuration and a free dev server port.
 2. Add it to `apps` in [`scripts/build.mjs`](scripts/build.mjs), to `install:all` and `start` in `package.json`, and to `.github/workflows/deploy.yml`.
 3. Add a card to [`landing/index.html`](landing/index.html).
 

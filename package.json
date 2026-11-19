@@ -2,14 +2,14 @@
   "name": "angular-playground",
   "private": true,
   "scripts": {
-    "install:all": "npm install && npm --prefix change-detection/v19 install && npm --prefix change-detection/v22 install && npm --prefix dependency-injection install",
+    "install:all": "npm install && npm --prefix projects/change-detection/v19 install && npm --prefix projects/change-detection/v22 install && npm --prefix projects/dependency-injection install",
     "start": "concurrently --names cd-v19,cd-v22,di --prefix-colors red,blue,green \"npm:start:cd:19\" \"npm:start:cd:22\" \"npm:start:di\"",
     "start:cd": "concurrently --names cd-v19,cd-v22 --prefix-colors red,blue \"npm:start:cd:19\" \"npm:start:cd:22\"",
-    "start:cd:19": "npm --prefix change-detection/v19 start",
-    "start:cd:22": "npm --prefix change-detection/v22 start",
-    "start:di": "npm --prefix dependency-injection start",
+    "start:cd:19": "npm --prefix projects/change-detection/v19 start",
+    "start:cd:22": "npm --prefix projects/change-detection/v22 start",
+    "start:di": "npm --prefix projects/dependency-injection start",
     "build": "node scripts/build.mjs",
-    "test": "npm --prefix change-detection/v22 test -- --watch=false",
+    "test": "npm --prefix projects/change-detection/v22 test -- --watch=false",
     "preview": "node scripts/preview.mjs"
   },
   "devDependencies": {

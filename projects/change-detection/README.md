@@ -58,7 +58,7 @@ The **No strategy (v22 default)** example shows why the new default matters: cli
 
 ## Getting Started
 
-This playground is part of [Angular Playground](../README.md). Install and run everything from the repository root:
+This playground is part of [Angular Playground](../../README.md). Install and run everything from the repository root:
 
 ```bash
 npm run install:all
