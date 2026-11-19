@@ -70,7 +70,8 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "./"
             },
             "development": {
               "optimization": false,
@@ -89,6 +90,9 @@
             "development": {
               "buildTarget": "dependency-injection-playground:build:development"
             }
+          },
+          "options": {
+            "port": 4200
           },
           "defaultConfiguration": "development"
         }

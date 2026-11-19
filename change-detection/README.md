@@ -58,51 +58,17 @@ The **No strategy (v22 default)** example shows why the new default matters: cli
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 22.22.3 or newer (see `.nvmrc`). It works for both versions.
-
-### Installation
+This playground is part of [Angular Playground](../README.md). Install and run everything from the repository root:
 
 ```bash
-git clone <repository-url>
-cd change-detection-playground
 npm run install:all
+npm run start:cd     # both versions
+npm run start:cd:19  # http://localhost:4219
+npm run start:cd:22  # http://localhost:4222
+npm test             # runs the Vitest specs of v22
 ```
 
-### Running the Application
-
-Run both versions at once:
-
-```bash
-npm start
-```
-
-Or just one of them:
-
-```bash
-npm run start:19   # http://localhost:4219
-npm run start:22   # http://localhost:4222
-```
-
-### Building and Testing
-
-```bash
-npm run build     # builds both versions into a single dist/ folder
-npm run preview   # serves dist/ at http://localhost:4300
-npm test          # runs the Vitest specs of v22
-```
-
-The build has one entrypoint, `dist/index.html`, where you choose a version:
-
-```
-dist/
-├── index.html   # entry page
-├── v19/         # Angular 19 app
-└── v22/         # Angular 22 app
-```
-
-The apps use a relative `<base href>`, so `dist/` can be deployed to any static host, including a sub-path such as GitHub Pages. In the build, the menu link switches between `v19/` and `v22/` on the same origin; with the dev servers it switches between the ports.
+In the build (`npm run build`), [`landing/`](landing) becomes `dist/change-detection/index.html`, where you choose a version, and the apps go to `dist/change-detection/v19/` and `dist/change-detection/v22/`. In the build, the menu link switches between `v19/` and `v22/` on the same origin; with the dev servers it switches between the ports.
 
 ## Exploring Change Detection
 

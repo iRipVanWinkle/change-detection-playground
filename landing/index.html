@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Angular Playground</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="change-detection/v22/favicon.ico">
+  <style>
+    * {
+      font-family: sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      padding: 24px 16px;
+      color: #333;
+      background: #fff;
+    }
+
+    h1 {
+      margin: 0;
+      text-align: center;
+    }
+
+    .subtitle {
+      margin: -16px 0 0;
+      text-align: center;
+      color: #808080;
+    }
+
+    .playgrounds {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .playground {
+      width: 300px;
+      padding: 20px 24px;
+      border-radius: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      background: #fff;
+      transition: background-color 0.2s;
+    }
+
+    .playground:hover {
+      background: #fafafa;
+    }
+
+    .playground--cd {
+      border: 0.15rem solid #65ace0;
+    }
+
+    .playground--di {
+      border: 0.15rem solid #9b87d8;
+    }
+
+    .playground h2 {
+      margin: 0 0 8px;
+    }
+
+    .playground p {
+      margin: 0;
+      font-size: 14px;
+      color: #808080;
+      line-height: 1.5;
+    }
+
+    .articles {
+      font-size: 13px;
+      color: #808080;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .articles a {
+      color: inherit;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Angular Playground</h1>
+  <p class="subtitle">Angular internals you can click on.</p>
+
+  <div class="playgrounds">
+    <a class="playground playground--cd" href="change-detection/">
+      <h2>Change Detection</h2>
+      <p>Which components Angular checks and when: <code>Default</code>/<code>Eager</code>, <code>OnPush</code>, signals, zoneless. Angular 19 and 22 side by side.</p>
+    </a>
+    <a class="playground playground--di" href="dependency-injection/">
+      <h2>Dependency Injection</h2>
+      <p>Where and in what order Angular looks for a dependency, and which instance a component finally gets.</p>
+    </a>
+  </div>
+
+  <p class="articles">
+    Change Detection article: <a href="https://medium.com/@iripvanwinkle/angular-change-detection-d3654c29099f">en</a> ·
+    <a href="https://dou.ua/forums/topic/53274/">ua</a>
+  </p>
+</body>
+
+</html>

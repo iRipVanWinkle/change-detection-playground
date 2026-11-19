@@ -26,7 +26,7 @@ createServer((req, res) => {
 
   try {
     if (statSync(file).isDirectory()) {
-      // The apps use a relative <base href>, so /v19 must become /v19/ for their assets to resolve.
+      // The apps use a relative <base href>, so /change-detection/v19 must become /change-detection/v19/ for their assets to resolve.
       if (!pathname.endsWith('/')) {
         res.writeHead(301, { Location: `${pathname}/${search}` }).end();
         return;

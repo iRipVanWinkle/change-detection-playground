@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Angular Change Detection Playground has moved</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://iripvanwinkle.github.io/angular-playground/change-detection/">
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=https://iripvanwinkle.github.io/angular-playground/change-detection/">
+  </noscript>
+  <script>
+    const oldBase = '/change-detection-playground/';
+    const newBase = 'https://iripvanwinkle.github.io/angular-playground/change-detection/';
+
+    const rest = location.pathname.startsWith(oldBase) ? location.pathname.slice(oldBase.length) : '';
+    // Before the move, the site root served the Angular 19 app, so a scenario link like /?onpush belongs to v19.
+    const path = rest === '' && location.search ? 'v19/' : rest;
+
+    location.replace(newBase + path + location.search + location.hash);
+  </script>
+</head>
+
+<body>
+  <p>The playground has moved to
+    <a href="https://iripvanwinkle.github.io/angular-playground/change-detection/">iripvanwinkle.github.io/angular-playground/change-detection/</a>.
+  </p>
+</body>
+
+</html>

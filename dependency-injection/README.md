@@ -2,7 +2,7 @@
 
 This project is an Angular application designed to explore and demonstrate how Dependency Injection resolves a dependency: where Angular looks for a provider, in what order, and which instance a component finally gets.
 
-It follows the idea of the [Change Detection Playground](https://github.com/iRipVanWinkle/change-detection-playground): a tree of components you can click on and watch what Angular does.
+It follows the idea of the [Change Detection Playground](../change-detection): a tree of components you can click on and watch what Angular does.
 
 ## How to read the picture
 
@@ -52,33 +52,14 @@ To add a scenario: create a component in `src/apps/`, register it in `src/main.t
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (version specified in `.nvmrc`)
-
-### Installation
+This playground is part of [Angular Playground](../README.md). Install and run everything from the repository root:
 
 ```bash
-git clone <repository-url>
-cd dependency-injection-playground
-npm install
+npm run install:all
+npm run start:di     # http://localhost:4200
 ```
 
-### Running the Application
-
-```bash
-npm start
-```
-
-The application will be available at `http://localhost:4200`.
-
-### Building the Application
-
-```bash
-npm run build
-```
-
-The build artifacts will be stored in the `dist/` directory.
+Or work in this folder on its own: `npm install`, `npm start`, `npm run build`.
 
 ## License
 
