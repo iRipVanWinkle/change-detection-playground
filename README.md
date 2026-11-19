@@ -60,10 +60,6 @@ The apps use a relative `<base href>`, so `dist/` works on any static host, incl
 2. Add it to `apps` in [`scripts/build.mjs`](scripts/build.mjs), to `install:all` and `start` in `package.json`, and to `.github/workflows/deploy.yml`.
 3. Add a card to [`landing/index.html`](landing/index.html).
 
-## Old URLs
-
-The Change Detection playground used to live at `iripvanwinkle.github.io/change-detection-playground/`, and the published articles still link there. [`redirects/change-detection-playground/`](redirects/change-detection-playground) holds the pages that go to the `gh-pages` branch of the old repository and send visitors here. A scenario link such as `?onpush` goes to `change-detection/v19/`, because the old site root served the Angular 19 app.
-
 ## License
 
 This project is licensed under the MIT License.
