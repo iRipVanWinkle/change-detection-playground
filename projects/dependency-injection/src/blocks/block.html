@@ -4,7 +4,12 @@
   <app-env-injectors />
 }
 
-<div #container class="block-container" [class.block-container__projected]="projected()">
+<div
+  #container
+  class="block-container"
+  [class.block-container__projected]="projected()"
+  [class.block-container__template]="!!declaredIn()"
+>
   <div class="block-wrap">
     <div
       #block
@@ -58,6 +63,9 @@
 
     <!-- Content children: declared by somebody else and projected here -->
     <ng-content />
+
+    <!-- Declared by somebody else in an <ng-template> and rendered here -->
+    <ng-container *ngTemplateOutlet="template() ?? null; injector: templateInjector()" />
   </div>
 </div>
 

@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, forwardRef } from '@angular/core';
 import { DemoService } from '../helpers/demo.service';
 import { BlockBase } from './block-base';
@@ -20,6 +21,7 @@ import { ProvideDemoServiceDirective } from './provide-demo-service.directive';
     forwardRef(() => BlockViewProvidersComponent),
     EnvInjectorsComponent,
     ProvideDemoServiceDirective,
+    NgTemplateOutlet,
   ],
   viewProviders: [DemoService],
 })

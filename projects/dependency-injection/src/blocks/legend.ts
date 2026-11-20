@@ -40,6 +40,17 @@ export const LEGEND_VIEW: LegendItem = [
   'A view child: the component is declared in the template of its parent.',
 ];
 
+export const LEGEND_TEMPLATE: LegendItem = [
+  '<div class="legend-line legend-line__template"></div>',
+  'Rendered from an <code>&lt;ng-template&gt;</code> declared in the template of another component: ' +
+    'the lookup starts from the place of declaration.',
+];
+
+export const LEGEND_OUTLET: LegendItem = [
+  '<small class="legend-modifier">outlet</small>',
+  "<code>ngTemplateOutletInjector: 'outlet'</code> — the template rendered here looks up from here.",
+];
+
 /** Builds the description box shown under a scenario. */
 export function legend(...extra: LegendItem[]): string {
   const items = [...COMMON, ...extra]

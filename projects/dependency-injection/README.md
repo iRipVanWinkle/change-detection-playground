@@ -14,7 +14,8 @@ Every pill is an injector.
   - **teal** — a directive on the component's element declares `providers: [DemoService]`;
   - **orange** — the component provides nothing.
 - The dashed pills above the tree are the `EnvironmentInjector` hierarchy: `root` → `platform` → `NullInjector`.
-- The small text under a label shows the options the component passes to `inject()`: `self`, `skipSelf`, `optional`, `host`.
+- The small text under a label shows the options the component passes to `inject()`: `self`, `skipSelf`, `optional`, `host`. `outlet` means the component renders a template with `ngTemplateOutletInjector: 'outlet'`.
+- A line goes from a component to the next injector Angular asks — its parent in the injector tree: solid for a view child, dashed for a content child (`<ng-content>`), dotted for a component rendered from an `<ng-template>`.
 
 **Click a component** and it asks Angular for `DemoService`, exactly as `inject(DemoService, options)` in its constructor would do:
 
@@ -40,6 +41,7 @@ Every scenario is a separate Angular application with its own root injector. Use
 | optional                   | `<app-optional>`       | No root provider: `NullInjectorError` vs `null` for an `optional` dependency.                                           |
 | host                       | `<app-host>`           | `host` stops at the host component, where only `viewProviders` are visible.                                             |
 | host & ng-content          | `<app-host-content>`   | The host is the component whose template declares the block, not its parent element.                                    |
+| ng-template                | `<app-template>`       | From an `<ng-template>`: the lookup starts where it is declared, with `injector: 'outlet'` — where it is rendered.      |
 
 ## Project Structure
 

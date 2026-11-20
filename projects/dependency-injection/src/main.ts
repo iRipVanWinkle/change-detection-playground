@@ -7,6 +7,7 @@ import { AppOptionalComponent } from './apps/app-optional.component';
 import { AppProvidersComponent } from './apps/app-providers.component';
 import { AppRootProviderComponent } from './apps/app-root-provider.component';
 import { AppSelfSkipSelfComponent } from './apps/app-self-skip-self.component';
+import { AppTemplateComponent } from './apps/app-template.component';
 import { AppViewProvidersComponent } from './apps/app-view-providers.component';
 import { provideDemoServiceInRoot } from './helpers/demo.service';
 import { Playground } from './helpers/playground.service';
@@ -31,6 +32,7 @@ const applications: Record<string, Application> = {
   optional: { component: AppOptionalComponent },
   host: { component: AppHostComponent, providers: [provideDemoServiceInRoot()] },
   hostContent: { component: AppHostContentComponent },
+  template: { component: AppTemplateComponent, providers: [provideDemoServiceInRoot()] },
 };
 
 Object.entries(applications)

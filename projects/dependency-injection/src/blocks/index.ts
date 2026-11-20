@@ -7,6 +7,7 @@ export { EnvInjectorsComponent } from './env-injectors.component';
 export { ProvideDemoServiceDirective } from './provide-demo-service.directive';
 export * from './legend';
 
+import { NgTemplateOutlet } from '@angular/common';
 import { BlockComponent } from './block.component';
 import { BlockProvidersComponent } from './block-providers.component';
 import { BlockViewProvidersComponent } from './block-view-providers.component';
@@ -20,4 +21,5 @@ export const BLOCK_IMPORTS = [
   BlockViewProvidersComponent,
   ProvideDemoServiceDirective,
   EnvInjectorsComponent,
+  NgTemplateOutlet,
 ] as const;

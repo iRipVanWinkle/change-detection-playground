@@ -9,6 +9,7 @@ import {
   input,
   InjectOptions,
   signal,
+  TemplateRef,
   viewChild,
 } from '@angular/core';
 import { DemoService } from '../helpers/demo.service';
@@ -44,6 +45,16 @@ export abstract class BlockBase implements InjectorView {
 
   /** Marks a block that is passed to its parent as content (`<ng-content>`). */
   readonly projected = input(false, { transform: booleanAttribute });
+
+  /**
+   * Set on a block declared inside an `<ng-template>`: the block whose template declares it.
+   * The DOM cannot tell where a template is declared, so the scenario passes it explicitly.
+   */
+  readonly declaredIn = input<BlockBase>();
+
+  /** A template this block renders after its content, see `ngTemplateOutlet`. */
+  readonly template = input<TemplateRef<unknown>>();
+  readonly templateInjector = input<Injector | 'outlet'>();
 
   // Root app components are bootstrapped without inputs, so they declare their tree here instead.
   protected rootTree?: BlocksTree;
@@ -100,22 +111,25 @@ export abstract class BlockBase implements InjectorView {
 
   /** `{ skipSelf: true, optional: true }` → `skipSelf, optional` */
   get modifiers(): string {
-    return Object.entries(this.tree()?.inject ?? {})
+    const options = Object.entries(this.tree()?.inject ?? {})
       .filter(([, enabled]) => enabled)
-      .map(([name]) => name)
-      .join(', ');
+      .map(([name]) => name);
+
+    if (this.templateInjector() === 'outlet') {
+      options.push('outlet');
+    }
+
+    return options.join(', ');
   }
 
   get element(): HTMLElement {
     return this.blockEl().nativeElement;
   }
 
-  /** The block right above this one in the element tree. */
   get parent(): BlockBase | null {
     return this.playground.parentOf(this);
   }
 
-  /** The block whose template declares this one — the place where a `host` lookup stops. */
   get hostBlock(): BlockBase | null {
     const parent = this.parent;
 

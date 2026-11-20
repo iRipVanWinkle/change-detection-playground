@@ -74,19 +74,21 @@ export class Playground {
     return ++this.instances;
   }
 
-  /** The closest block above the given one in the element tree. */
+  /**
+   * The block above the given one in the injector tree: the closest block in the element tree.
+   * Except a block rendered from an `<ng-template>`: by default Angular continues the lookup
+   * where the template is declared, and only with `ngTemplateOutletInjector: 'outlet'` — where
+   * it is rendered.
+   */
   parentOf(block: BlockBase): BlockBase | null {
-    let element = block.hostElement.parentElement;
+    const renderer = this.closestBlockAbove(block);
+    const declaredIn = block.declaredIn();
 
-    while (element) {
-      const parent = this.blocks.get(element);
-      if (parent) {
-        return parent;
-      }
-      element = element.parentElement;
+    if (declaredIn && renderer?.templateInjector() !== 'outlet') {
+      return declaredIn;
     }
 
-    return null;
+    return renderer;
   }
 
   /** Shows a lookup that Angular has just performed for the `origin` block. */
@@ -175,6 +177,20 @@ export class Playground {
     }
 
     return path;
+  }
+
+  private closestBlockAbove(block: BlockBase): BlockBase | null {
+    let element = block.hostElement.parentElement;
+
+    while (element) {
+      const parent = this.blocks.get(element);
+      if (parent) {
+        return parent;
+      }
+      element = element.parentElement;
+    }
+
+    return null;
   }
 
   private homeOf(service: DemoService): InjectorView | null {

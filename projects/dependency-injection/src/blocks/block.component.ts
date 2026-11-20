@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, forwardRef, inject } from '@angular/core';
 import { BlockBase, BlockKind } from './block-base';
 import { BlockProvidersComponent } from './block-providers.component';
@@ -15,6 +16,7 @@ import { ProvideDemoServiceDirective } from './provide-demo-service.directive';
     forwardRef(() => BlockViewProvidersComponent),
     EnvInjectorsComponent,
     ProvideDemoServiceDirective,
+    NgTemplateOutlet,
   ],
 })
 export class BlockComponent extends BlockBase {

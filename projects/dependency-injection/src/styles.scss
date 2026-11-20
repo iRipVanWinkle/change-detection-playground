@@ -36,6 +36,13 @@ body {
   &__projected::before {
     border-top-style: dashed;
   }
+
+  // Rendered from an <ng-template>: the line goes to the injector parent, not to the DOM one.
+  // It is drawn above the blocks, so it is clearly seen passing the block it is rendered in.
+  &__template::before {
+    border-top: 2px dotted #666;
+    z-index: 11;
+  }
 }
 
 .block-wrap {
@@ -244,12 +251,21 @@ app-env-injectors {
     color: #a0a0a0;
   }
 
+  .legend-modifier {
+    font-size: 11px;
+    color: #a8a8a8;
+  }
+
   .legend-line {
     width: 22px;
     border-top: 1px solid #666;
 
     &__projected {
       border-top-style: dashed;
+    }
+
+    &__template {
+      border-top: 2px dotted #666;
     }
   }
 }
